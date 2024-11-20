@@ -39,22 +39,12 @@ async def add_lesson(plan: Plan, session: Session = Depends(get_session)) -> dic
     logger_error.exception("Error adding lesson")
     raise HTTPException(status_code=400, detail="Error adding lesson")
 
-
-# удаление урока через API
-# @app.delete("/schedule/api/delete")
-# def delete_lesson(*, session: Session=Depends(get_session), name:str, day:str)->dict:
-#     del_result = lesson_delete(session, name, day)
-#     if del_result == "error":
-#         return {"lesson": "error name or day"}
-#     return {"lesson":"delete success"}
-
 @app.delete("/schedule/api/delete", response_model=dict)
 async def delete_lesson(request: DeleteLessonRequest, session: Session = Depends(get_session)) -> dict:
     del_result = lesson_delete(session, request.name, request.day)
     if del_result == "error":
         raise HTTPException(status_code=400, detail="Error: name or day not found")
     return {"lesson": "delete success"}
-
 
 # посмотреть уроки через API
 @app.get("/schedule/api", response_model = dict)
