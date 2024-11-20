@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+table, td {
+width: 30%;
+  border:2px solid black;
+  border-collapse: collapse;
+  text-align: center;
+}
+  th {  width: 10%;
+  border:2px solid black;
+  text-align: center;
+}
+caption {font-size: 26px;}
+</style>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>{{title}}</title>
+</head>
+<body>
+<div class="wrapper">
+    <table id="sortable-table">
+        <caption> {{title}} </caption>
+        <thead>
+        <tr>
+            <th>Время</th>
+            <th>Имя</th>
+        </tr>
+        </thead>
+        {% for day, les in lessons.lesson.items() %}
+        <tbody data-day= "{{ day }}">
+        <tr> <td colspan="2"> <h3> {{day}} </h3> </td> </tr>
+        {%for l in les%}
+        <tr class="lesson" data-day= "{{ day }}" id="{{ l[4] }}">
+            <td class="time"> {{l[1]}}-{{l[2]}} </td>
+            <td> {{l[3]}}</td>
+        </tr>
+        {% endfor %}
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+<button id="send-button">Отправить</button>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="/static/functions.js"></script>
+
+    <script>
+        // Получаем данные из Jinja2 и передаем их в JavaScript
+        const data = {{ lessons | tojson }};
+
+        // Выводим данные в консоль
+        console.log(data);
+    </script>
+</body>
+</html>

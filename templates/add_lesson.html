@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>{{title}}</title>
+</head>
+<body>
+         <div>
+             <form>
+      <h2> Добавить занятие </h2>
+        <p>
+            Имя:
+            <input type ="text" id="name" name="name">
+        </p>
+        <p>
+            День:
+            <select name="day_lesson">
+                {% for day in days %}
+                 <option value = {{day}}> {{day}} </option>
+                {% endfor %}
+            </select>
+        </p>
+        <p>
+            Желаемое время начала занятий:
+         <select name="time">
+            {% for time in times %}
+                <option value = {{time}}> {{time}} </option>
+             {% endfor %}
+            </select>
+        </p>
+        <p>
+              Длительность занятия:<br>
+  <input type="radio" id="dur1" name="dur" value="1">
+  <label for="dur1">1</label><br>
+  <input type="radio" id="dur15" name="dur" value="1.5">
+  <label for="dur15">1.5</label><br>
+  <input type="radio" id="dur2" name="dur" value="2">
+  <label for="dur2">2</label><br><br>
+  <button type="submit">Отправить</button>
+        </p>
+    </form>
+<!--    <h2> Удалить занятие </h2>-->
+<!--    <form action = "/plane/dellesson" method ="post" accept-charset="utf-8">-->
+<!--        <p>-->
+<!--            Имя:-->
+<!--            <select name = "name_student">-->
+<!--                {% for stud in students %}-->
+<!--                <option value = {{stud}}>{{stud}} </option>-->
+<!--                {% endfor %}-->
+<!--            </select>-->
+<!--        <p>-->
+<!--            День:-->
+<!--            <select name="day_lesson">-->
+<!--                {% for day in days %}-->
+<!--                 <option> value = {{day}}> {{day}} </option>-->
+<!--                {% endfor %}-->
+<!--        </select>-->
+<!--        <button type="submit">Отправить</button>-->
+<!--        </p>-->
+<!--    </form>-->
+            </div>
+<!-- <script src="https://replit.com/public/js/replit-badge-v2.js" theme="dark" position="bottom-right"></script> -->
+</body>
+</html>
