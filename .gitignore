@@ -1,0 +1,7 @@
+/.env
+/plan.db
+/proba.py
+/.venv/
+/templates/proba.html
+/base.py
+/base_config.py
